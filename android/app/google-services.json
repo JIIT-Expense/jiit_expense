@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "400467331619",
+    "firebase_url": "https://jiit-expense.firebaseio.com",
+    "project_id": "jiit-expense",
+    "storage_bucket": "jiit-expense.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:400467331619:android:da81f9b65f0e4afa14bf96",
+        "android_client_info": {
+          "package_name": "com.android.jiitexpense"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "400467331619-pku5pljatilgkaki3dgg3m95s2omnu3h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAx_7O4BdVtokOqogKqSHKOKVpa7HaL0HY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "400467331619-pku5pljatilgkaki3dgg3m95s2omnu3h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
