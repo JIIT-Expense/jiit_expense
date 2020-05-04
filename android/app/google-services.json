@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "400467331619",
-    "firebase_url": "https://jiit-expense.firebaseio.com",
-    "project_id": "jiit-expense",
-    "storage_bucket": "jiit-expense.appspot.com"
+    "project_number": "654188865718",
+    "firebase_url": "https://jiit-expense-785d9.firebaseio.com",
+    "project_id": "jiit-expense-785d9",
+    "storage_bucket": "jiit-expense-785d9.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:400467331619:android:da81f9b65f0e4afa14bf96",
+        "mobilesdk_app_id": "1:654188865718:android:fb98db54446654541d9e17",
         "android_client_info": {
           "package_name": "com.android.jiitexpense"
         }
       },
       "oauth_client": [
         {
-          "client_id": "400467331619-pku5pljatilgkaki3dgg3m95s2omnu3h.apps.googleusercontent.com",
+          "client_id": "654188865718-cc0efl1h8crnash71e9o64u6s5v2t3uu.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAx_7O4BdVtokOqogKqSHKOKVpa7HaL0HY"
+          "current_key": "AIzaSyDF5BveCMPy5nji419tjYgmpWmyqhGaoBc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "400467331619-pku5pljatilgkaki3dgg3m95s2omnu3h.apps.googleusercontent.com",
+              "client_id": "654188865718-cc0efl1h8crnash71e9o64u6s5v2t3uu.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

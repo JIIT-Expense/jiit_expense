@@ -1,38 +1,41 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:jiitexpense/models/brew.dart';
-import 'package:jiitexpense/screens/home/settings_form.dart';
+import 'package:jiitexpense/models/canteen.dart';
+import 'package:jiitexpense/models/user.dart';
+import 'package:jiitexpense/screens/canteen/canteen_wrapper.dart';
+import 'package:jiitexpense/screens/home/menu_items.dart';
 import 'package:jiitexpense/services/auth.dart';
-import 'package:jiitexpense/services/database.dart';
+import 'package:jiitexpense/services/canteen.dart';
+import 'package:jiitexpense/widgets/canteen_card.dart';
+import 'package:jiitexpense/widgets/user_canteen_details.dart';
 import 'package:provider/provider.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:jiitexpense/screens/home/brew_list.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
 
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
   final AuthService _auth = AuthService();
 
+  Canteen currCanteen;
 
 
   @override
   Widget build(BuildContext context) {
+    User user = Provider.of<User>(context);
 
-    void showSettingsPanel() {
-      showModalBottomSheet(context: context, builder: (context) {
-        return Container(
-          padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 60.0),
-          child: SettingsForm(),
-        );
+    onChangeDropDown(Canteen canteen) {
+      setState(() {
+        currCanteen = canteen;
       });
     }
 
-    return StreamProvider<List<Brew>>.value(
-      value: DatabaseService().brews,
-      child: Scaffold(
+    return Scaffold(
         backgroundColor: Colors.brown[50],
         appBar: AppBar(
           backgroundColor: Colors.brown[400],
-          title: Text('Homepage'),
+          title: Text('Select a Canteen'),
           elevation: 0.0,
           actions: <Widget>[
             FlatButton.icon(
@@ -42,17 +45,22 @@ class Home extends StatelessWidget {
                 await _auth.signOut();
               },
             ),
-            FlatButton.icon(
-                onPressed: () => showSettingsPanel(),
-                icon: Icon(Icons.settings),
-                label: Text('settings'),
-            ),
           ],
         ),
-        body: BrewList(),
-      ),
+        body: Center(
+          child: StreamProvider<List<Canteen>>.value(
+                  value: CanteenService().canteens(),
+                  child: this.currCanteen == null ? CanteenWrapper(onChange: onChangeDropDown) : Column(
+                    children: <Widget>[
+                      CanteenWrapper(onChange : onChangeDropDown),
+                      CanteenCard(canteen: currCanteen),
+                      Expanded(
+                          child: MenuItems(canteen: this.currCanteen)
+                      ),
+                    ],
+                  ),
+                ),
+        ),
     );
   }
-
-
 }

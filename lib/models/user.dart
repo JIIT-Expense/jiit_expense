@@ -1,16 +1,15 @@
+import 'package:jiitexpense/models/user_Canteen.dart';
+
 class User {
 
   final String uid;
-
-  User({ this.uid });
-}
-
-class UserData {
-
-  final String uid;
+  final String email;
   final String name;
-  final String sugars;
-  final int strength;
+  List<UserCanteen> userCanteen;
 
-  UserData({this.uid, this.sugars, this.name, this.strength});
+  User({ this.uid , this.email, this.name, this.userCanteen});
+
+  UserCanteen getUserCanteenWithUid(String uid) {
+    return this.userCanteen.where((userCanteen) => userCanteen.uid == uid).first;
+  }
 }

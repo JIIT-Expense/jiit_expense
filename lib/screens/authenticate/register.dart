@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:jiitexpense/services/auth.dart';
 import 'package:jiitexpense/shared/constants.dart';
+import 'package:jiitexpense/widgets/email_text_input.dart';
 import 'package:jiitexpense/shared/loading.dart';
+import 'package:jiitexpense/widgets/password_text_input.dart';
 
 class Register extends StatefulWidget {
 
@@ -20,10 +22,26 @@ class _RegisterState extends State<Register> {
 
   String email = '';
   String password = '';
+  String name = '';
   String error = '';
+
+
 
   @override
   Widget build(BuildContext context) {
+
+    updateEmail(String email) {
+      setState(() {
+        this.email = email;
+      });
+    }
+
+    updatePassword(String password) {
+      setState(() {
+        this.password = password;
+      });
+    }
+
     return loading ? Loading() : Scaffold(
       backgroundColor: Colors.brown[100],
       appBar: AppBar(
@@ -48,25 +66,18 @@ class _RegisterState extends State<Register> {
             children: <Widget>[
               SizedBox(height: 20.0),
               TextFormField(
-                decoration: textInputDecoration.copyWith(hintText: 'Email'),
-                validator: (email) => email.isEmpty ? 'Enter an Email' : null,
-                onChanged: (email) {
+                decoration: textInputDecoration.copyWith(hintText: 'Name'),
+                validator: (name) => name.length == 0 ? 'Name must be entered' : null,
+                onChanged: (name) {
                   setState(() {
-                    this.email = email;
+                    this.name = name;
                   });
                 },
               ),
               SizedBox(height: 20.0),
-              TextFormField(
-                decoration: textInputDecoration.copyWith(hintText: 'Password'),
-                validator: (password) => password.length < 6 ? 'Enter a password more than 6 character' : null,
-                obscureText: true,
-                onChanged: (password) {
-                  setState(() {
-                    this.password = password;
-                  });
-                },
-              ),
+              EmailTextInput(updateEmail: updateEmail),
+              SizedBox(height: 20.0),
+              PasswordTextInput(updatePassword: updatePassword),
               SizedBox(height: 20.0),
               RaisedButton(
                 color: Colors.brown[400],
@@ -77,11 +88,12 @@ class _RegisterState extends State<Register> {
                   ),
                 ),
                 onPressed: () async {
+                  print(this.email);
                   if (_formKey.currentState.validate()) {
                     setState(() {
                       loading = true;
                     });
-                    dynamic result = await _auth.registerWithEmailPassword(email, password);
+                    dynamic result = await _auth.registerWithEmailPassword(name, email, password);
                     if (result == null) {
                       setState(() {
                         loading = false;
