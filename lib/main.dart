@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:jiitexpense/screens/wrapper.dart';
-import 'package:jiitexpense/services/auth.dart';
+import 'package:jiitexpense/Layouts/auth/auth.dart';
+import 'package:jiitexpense/Layouts/wrapper.dart';
+import 'package:jiitexpense/model/user.dart';
+import 'package:jiitexpense/services/auth/auth.dart';
 import 'package:provider/provider.dart';
-
-import 'models/user.dart';
 
 void main() => runApp(MyApp());
 

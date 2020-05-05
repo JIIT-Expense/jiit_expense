@@ -1,3 +1,3 @@
-import 'package:jiitexpense/models/canteen.dart';
-
-Canteen selectedCanteen;
+class Globals {
+  static int selectedCanteenIndex = -1;
+}
