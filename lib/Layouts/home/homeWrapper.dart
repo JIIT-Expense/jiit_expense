@@ -19,7 +19,7 @@ class _HomeWrapperState extends State<HomeWrapper> {
     super.initState();
     _widgetOptions = <Widget>[
       Order(canteenIndex: widget.canteenIndex),
-      Wallet(),
+      Wallet(canteenIndex: widget.canteenIndex),
       Transaction()
     ];
   }
@@ -48,7 +48,7 @@ class _HomeWrapperState extends State<HomeWrapper> {
             title: new Text('Home'),
           ),
           BottomNavigationBarItem(
-            icon: new Icon(Icons.attach_money),
+            icon: new Icon(Icons.account_balance_wallet),
             title: new Text('Wallet'),
           ),
           BottomNavigationBarItem(

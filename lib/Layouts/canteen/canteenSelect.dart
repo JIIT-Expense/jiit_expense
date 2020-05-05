@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jiitexpense/Layouts/home/home.dart';
+import 'package:jiitexpense/Layouts/home/homeWrapper.dart';
 import 'package:jiitexpense/shared/widgets/horizontal_selector.dart';
 
 class CanteenSelect extends StatelessWidget {

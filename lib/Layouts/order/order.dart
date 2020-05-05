@@ -30,7 +30,7 @@ class _OrderState extends State<Order> {
           actions: <Widget>[
             InkWell(
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Checkout(menuItems: menuItems)));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Checkout(menuItem: menuItems, cart: cartBloc)));
               },
               child: Padding(
                 padding: const EdgeInsets.all(8.4),

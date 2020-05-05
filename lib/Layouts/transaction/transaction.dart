@@ -12,7 +12,26 @@ class _TransactionState extends State<Transaction> {
       appBar: AppBar(
         title: Text('Transaction'),
       ),
-      body: Text('Wallet'),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            RaisedButton(
+              onPressed: () {
+                print('');
+              },
+              child: Text('Send'),
+            ),
+            SizedBox(height: 30,),
+            RaisedButton(
+              onPressed: () {
+                print('');
+              },
+              child: Text('Recieve'),
+            ),
+          ],
+        ),
+      ),
     );;
   }
 }
