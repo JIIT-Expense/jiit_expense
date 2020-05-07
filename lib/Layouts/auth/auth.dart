@@ -22,7 +22,7 @@ class _AuthState extends State<Auth> {
                 widget.isLogin = !widget.isLogin;
               });
             },
-          )
+          ),
         ],
       ),
       body: Center(

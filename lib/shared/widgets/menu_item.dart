@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:jiitexpense/model/menuItem.dart';
 
-class MenuItem extends StatefulWidget {
+class MenuItemWidget extends StatefulWidget {
   @override
-  _MenuItemState createState() => _MenuItemState();
-  final String itemName;
+  _MenuItemWidgetState createState() => _MenuItemWidgetState();
+  final MenuItem menuItem;
   final int menuItemIndex;
   final Function updateQuantity;
-  const MenuItem({Key key, this.itemName, this.menuItemIndex, this.updateQuantity}): super(key: key);
+  const MenuItemWidget({Key key, this.menuItem, this.menuItemIndex, this.updateQuantity}): super(key: key);
 }
 
-class _MenuItemState extends State<MenuItem> {
+class _MenuItemWidgetState extends State<MenuItemWidget> {
   int quantity = 0;
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class _MenuItemState extends State<MenuItem> {
               Column(
                 children: <Widget>[
                   Text(
-                    widget.itemName,
+                    widget.menuItem.name,
                     style: TextStyle(
                       fontSize: 18.0,
                     ),
@@ -42,8 +43,10 @@ class _MenuItemState extends State<MenuItem> {
               IconButton(
                 onPressed: () {
                   setState(() {
-                    this.quantity == 0 ? this.quantity = 0 : this.quantity -= 1;
-                    widget.updateQuantity(widget.menuItemIndex, quantity);
+                    if (!(this.quantity == 0)) {
+                      quantity--;
+                      widget.updateQuantity(widget.menuItemIndex, quantity);
+                    }
                   });
                 },
                 icon: Icon(Icons.remove),

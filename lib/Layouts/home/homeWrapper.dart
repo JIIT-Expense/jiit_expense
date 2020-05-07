@@ -8,8 +8,8 @@ import 'package:provider/provider.dart';
 class HomeWrapper extends StatefulWidget {
   @override
   _HomeWrapperState createState() => _HomeWrapperState();
-  final int canteenIndex;
-  const HomeWrapper({Key key, this.canteenIndex}): super(key: key);
+  final String canteenId;
+  const HomeWrapper({Key key, this.canteenId}): super(key: key);
 }
 
 class _HomeWrapperState extends State<HomeWrapper> {
@@ -18,8 +18,8 @@ class _HomeWrapperState extends State<HomeWrapper> {
   void initState() {
     super.initState();
     _widgetOptions = <Widget>[
-      Order(canteenIndex: widget.canteenIndex),
-      Wallet(canteenIndex: widget.canteenIndex),
+      Order(canteenId: widget.canteenId),
+      Wallet(canteenId: widget.canteenId),
       Transaction()
     ];
   }

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:jiitexpense/model/menuItem.dart';
 import 'package:jiitexpense/services/cart/cart.dart';
-import 'package:provider/provider.dart';
 
 class Checkout extends StatefulWidget {
   @override
   _CheckoutState createState() => _CheckoutState();
-  final List<String> menuItem;
+  final List<MenuItem> menuItem;
   final CartBloc cart;
   const Checkout({Key key, this.menuItem, this.cart}) : super(key: key);
 }
@@ -16,7 +16,7 @@ class _CheckoutState extends State<Checkout> {
     return Scaffold(
       appBar: AppBar(title: Text('Checkout'), automaticallyImplyLeading: true),
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 50),
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
@@ -27,10 +27,10 @@ class _CheckoutState extends State<Checkout> {
               ),
             ),
             SizedBox(
-              height: 50,
+              height: 30,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 Text(
                   'Name',
@@ -39,6 +39,15 @@ class _CheckoutState extends State<Checkout> {
                     fontSize: 20,
                   ),
                 ),
+                Spacer(),
+                Text(
+                  'Price',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                ),
+                Spacer(),
                 Text(
                   'Quantity',
                   style: TextStyle(
@@ -48,20 +57,29 @@ class _CheckoutState extends State<Checkout> {
                 )
               ],
             ),
+            SizedBox(height: 10,),
             Expanded(
               child: widget.cart.getSize() == 0 ? Text('You need to add some items here') : ListView.builder(
                 itemCount: widget.cart.getSize(),
                 itemBuilder: (context, index) {
                   int key = widget.cart.cart.keys.elementAt(index);
                   return Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Text(
-                        widget.menuItem[key],
+                        widget.menuItem[key].name,
                         style: TextStyle(
                           fontSize: 20,
                         ),
                       ),
+                      Spacer(),
+                      Text(
+                        '${widget.menuItem[key].cost}',
+
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                      Spacer(),
                       Text(
                         '${widget.cart.cart[key]}',
                         style: TextStyle(
@@ -90,7 +108,7 @@ class _CheckoutState extends State<Checkout> {
                   },
                   child: Text('Place Order'),
                   color: Colors.blue,
-                  
+
               ),
               ],
             )

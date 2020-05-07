@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 class Wallet extends StatefulWidget {
   @override
   _WalletState createState() => _WalletState();
-  final int canteenIndex;
-  const Wallet({Key key, this.canteenIndex}): super(key: key);
+  final String canteenId;
+  const Wallet({Key key, this.canteenId}): super(key: key);
 }
 
 class _WalletState extends State<Wallet> {
