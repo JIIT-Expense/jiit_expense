@@ -7,7 +7,12 @@ class MenuItemWidget extends StatefulWidget {
   final MenuItem menuItem;
   final int menuItemIndex;
   final Function updateQuantity;
-  const MenuItemWidget({Key key, this.menuItem, this.menuItemIndex, this.updateQuantity}): super(key: key);
+  const MenuItemWidget(
+      {Key key,
+      this.menuItem,
+      this.menuItemIndex,
+      this.updateQuantity,})
+      : super(key: key);
 }
 
 class _MenuItemWidgetState extends State<MenuItemWidget> {
@@ -31,7 +36,7 @@ class _MenuItemWidgetState extends State<MenuItemWidget> {
                     ),
                   ),
                   Text(
-                    '$quantity added to cart',
+                    '$quantity / ${widget.menuItem.availability} added to cart',
                     style: TextStyle(
                       fontSize: 16.0,
                       letterSpacing: 2.0,
@@ -54,8 +59,10 @@ class _MenuItemWidgetState extends State<MenuItemWidget> {
               IconButton(
                 onPressed: () {
                   setState(() {
-                    this.quantity += 1;
-                    widget.updateQuantity(widget.menuItemIndex, quantity);
+                    if (this.quantity < widget.menuItem.availability) {
+                      this.quantity += 1;
+                      widget.updateQuantity(widget.menuItemIndex, quantity);
+                    }
                   });
                 },
                 icon: Icon(Icons.add),

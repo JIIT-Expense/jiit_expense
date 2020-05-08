@@ -18,8 +18,13 @@ class _HomeWrapperState extends State<HomeWrapper> {
   void initState() {
     super.initState();
     _widgetOptions = <Widget>[
-      Order(canteenId: widget.canteenId),
-      Wallet(canteenId: widget.canteenId),
+    ChangeNotifierProvider<CartBloc>(
+      create: (BuildContext context) {
+        return CartBloc();
+      },
+      child: Order(canteenId: widget.canteenId),
+      ),
+      WalletLayout(canteenId: widget.canteenId),
       Transaction()
     ];
   }
@@ -32,12 +37,7 @@ class _HomeWrapperState extends State<HomeWrapper> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ChangeNotifierProvider<CartBloc>(
-        create: (BuildContext context) {
-          return CartBloc();
-        },
-        child: _widgetOptions[_selectedIndex],
-      ),
+      body: _widgetOptions[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex, // this will be set when a new tab is tapped
         onTap: _onItemTapped,

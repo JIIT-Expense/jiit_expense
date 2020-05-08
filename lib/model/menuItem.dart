@@ -2,7 +2,7 @@
 class MenuItem {
 
   final int availability;
-  final double cost;
+  final int cost;
   final String name;
   final int waitingTime;
 

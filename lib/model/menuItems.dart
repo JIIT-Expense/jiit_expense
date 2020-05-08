@@ -15,4 +15,18 @@ class MenuItems {
           )).toList() as List<MenuItem>),
         uid = id;
 
+  toJson() {
+    List<Map> itemList = List();
+    menuItems.forEach((val) => {
+      itemList.add({
+        'availability': val.availability,
+        'cost': val.cost,
+        'name': val.name,
+        'waitingTime': val.waitingTime
+      })
+    });
+    return {
+      'items' : itemList
+    };
+  }
 }

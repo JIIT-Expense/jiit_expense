@@ -29,6 +29,7 @@ class _OrderState extends State<Order> {
     var streamBuilder = StreamBuilder<MenuItems>(
       stream: MenuItemService().stream(widget.canteenId),
       builder: (context, snapshot) {
+
         if (snapshot.hasError) {
           return Text('Error Loading Database');
         }
@@ -43,7 +44,7 @@ class _OrderState extends State<Order> {
                 actions: <Widget>[
                   InkWell(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => Checkout(cart: cartBloc, menuItem: menuItems,)));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Checkout(cart: cartBloc, menuItem: menuItems, canteenId: widget.canteenId,)));
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(8.4),
@@ -69,7 +70,7 @@ class _OrderState extends State<Order> {
                     child: ListView.builder(
                       itemCount: menuItems.length,
                       itemBuilder: (context, index) {
-                        return MenuItemWidget(menuItem: menuItems[index], menuItemIndex: index, updateQuantity: cartBloc.addToCart);
+                        return MenuItemWidget(menuItem: menuItems[index], menuItemIndex: index, updateQuantity: cartBloc.addToCart,);
 //                    return MenuItem(itemName: this.menuItems[index]);
                       },
                     ),
