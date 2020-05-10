@@ -140,7 +140,7 @@ class _CheckoutState extends State<Checkout> {
                       onPressed: () async {
                         if (order.totalAmount > wallet.data.balance) return null;
                         String id = await OrderService().placeOrder(order, wallet.data.balance, widget.menuItem);
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => PlaceOrder(order: order, orderId: id)));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => PlaceOrder(order: order, orderId: id, isOnGoingOrder: true,)));
                       },
                       child: Text('Place Order'),
                       color: Colors.blue,

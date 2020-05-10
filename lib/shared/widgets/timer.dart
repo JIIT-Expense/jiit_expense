@@ -16,8 +16,18 @@ class _TimeToOrderState extends State<TimeToOrder> {
     DateTime orderDeliverDate = widget.start.add(Duration(minutes: widget.totalDuration));
     return Column(
       children: <Widget>[
-        Text('${DateFormat('').add_jm().format(orderDeliverDate)}'),
-
+        Text(
+            'Time to collect order : ${DateFormat('').add_jm().format(orderDeliverDate)}',
+          style: TextStyle(
+            fontSize: 20,
+          ),
+        ),
+        Text(
+          'Date : ${DateFormat('').add_yMMMMd().format(orderDeliverDate)}',
+          style: TextStyle(
+            fontSize: 20,
+          ),
+        )
       ],
     );
   }
