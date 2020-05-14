@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jiitexpense/Layouts/auth/login.dart';
 import 'package:jiitexpense/Layouts/auth/register.dart';
 
+// ignore: must_be_immutable
 class Auth extends StatefulWidget {
   @override
   _AuthState createState() => _AuthState();

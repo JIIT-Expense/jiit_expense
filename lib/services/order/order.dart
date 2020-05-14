@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:jiitexpense/model/menuItem.dart';
 import 'package:jiitexpense/model/menuItemWithQuantity.dart';
-import 'package:jiitexpense/model/menuItems.dart';
 import 'package:jiitexpense/model/order.dart';
 import 'package:jiitexpense/services/menuItem/menuItem.dart';
 import 'package:jiitexpense/services/wallet/wallet.dart';
@@ -62,5 +61,26 @@ class OrderService {
 
   _deductAvailableItem(Order order, List<MenuItem> menuItemList) async {
     await MenuItemService().deductAvailability(order, menuItemList);
+  }
+
+  Stream<List<Order>> getOnGoingOrderList(String userId, String canteenId) {
+    Stream<QuerySnapshot> stream = firestore.collection(onGoingOrderPath)
+        .where('canteenId', isEqualTo: canteenId)
+        .where('user', isEqualTo: userId)
+        .orderBy('dateTime', descending: true)
+        .snapshots();
+    return stream.map((qShot) => qShot.documents.map((doc) =>
+      Order.fromMap(doc.data, doc.documentID)
+    ).toList());
+  }
+  Stream<List<Order>> getPrevOrderList(String userId, String canteenId) {
+    Stream<QuerySnapshot> stream = firestore.collection(pastOrderPath)
+        .where('canteenId', isEqualTo: canteenId)
+        .where('user', isEqualTo: userId)
+        .orderBy('dateTime', descending: true)
+        .snapshots();
+    return stream.map((qShot) => qShot.documents.map((doc) =>
+        Order.fromMap(doc.data, doc.documentID)
+    ).toList());
   }
 }

@@ -25,7 +25,7 @@ class _HomeWrapperState extends State<HomeWrapper> {
       child: Order(canteenId: widget.canteenId),
       ),
       WalletLayout(canteenId: widget.canteenId),
-      Transaction()
+      Transaction(canteenId: widget.canteenId)
     ];
   }
   int _selectedIndex = 0;

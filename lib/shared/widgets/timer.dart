@@ -17,17 +17,17 @@ class _TimeToOrderState extends State<TimeToOrder> {
     return Column(
       children: <Widget>[
         Text(
-            'Time to collect order : ${DateFormat('').add_jm().format(orderDeliverDate)}',
+            'Time : ${DateFormat('').add_jm().add_yMMMMd().format(widget.start)}',
           style: TextStyle(
             fontSize: 20,
           ),
         ),
         Text(
-          'Date : ${DateFormat('').add_yMMMMd().format(orderDeliverDate)}',
+          'Collect Order After : ${DateFormat('').add_jm().format(orderDeliverDate)}',
           style: TextStyle(
             fontSize: 20,
           ),
-        )
+        ),
       ],
     );
   }

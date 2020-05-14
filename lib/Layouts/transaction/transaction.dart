@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:jiitexpense/Layouts/transaction/recieveMoney.dart';
 
 class Transaction extends StatefulWidget {
   @override
   _TransactionState createState() => _TransactionState();
+  final String canteenId;
+  const Transaction({Key key, this.canteenId}): super(key: key);
 }
 
 class _TransactionState extends State<Transaction> {
@@ -25,13 +28,17 @@ class _TransactionState extends State<Transaction> {
             SizedBox(height: 30,),
             RaisedButton(
               onPressed: () {
-                print('');
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ReceiveMoney(canteenId: widget.canteenId,))
+                );
               },
               child: Text('Recieve'),
             ),
           ],
         ),
       ),
-    );;
+    );
   }
 }

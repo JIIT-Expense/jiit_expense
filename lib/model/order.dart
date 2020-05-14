@@ -1,4 +1,3 @@
-import 'package:jiitexpense/model/menuItem.dart';
 import 'package:jiitexpense/model/menuItemWithQuantity.dart';
 
 class Order {
@@ -8,8 +7,27 @@ class Order {
   final String userId;
   final DateTime dateTime;
   final String canteenId;
+  String uid;
 
-  Order({this.items, this.totalAmount, this.totalEstimatedTime, this.userId, this.dateTime, this.canteenId});
+  Order({this.items, this.totalAmount, this.totalEstimatedTime, this.userId, this.dateTime, this.canteenId, this.uid});
+
+  Order.fromMap(Map snapshot, String uid) :
+      totalAmount = snapshot['totalAmount'],
+      totalEstimatedTime = snapshot['totalEstimatedWaitingTime'],
+      userId = snapshot['user'],
+      dateTime = snapshot['dateTime'].toDate() as DateTime,
+      canteenId = snapshot['canteenId'],
+      uid = uid,
+      items = (snapshot['items'] as List).map((val) =>
+        MenuItemWithQuantity(
+            name: val['name'],
+            cost: val['price'],
+            waitingTime: val['estimatedTime'],
+            availability: val['availability'],
+            quantity: val['quantity']
+        )
+      ).toList();
+
 
   toJson() {
     List<Map> itemList = List();

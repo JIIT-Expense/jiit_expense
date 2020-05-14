@@ -7,9 +7,8 @@ class PlaceOrder extends StatefulWidget {
   @override
   _PlaceOrderState createState() => _PlaceOrderState();
   final Order order;
-  final String orderId;
   final bool isOnGoingOrder;
-  const PlaceOrder({Key key, this.order, this.orderId, this.isOnGoingOrder}) : super(key: key);
+  const PlaceOrder({Key key, this.order, this.isOnGoingOrder}) : super(key: key);
 }
 
 class _PlaceOrderState extends State<PlaceOrder> {
@@ -38,9 +37,10 @@ class _PlaceOrderState extends State<PlaceOrder> {
 
     String heading = widget.isOnGoingOrder ? 'Show this to canteen order to accept order' : 'Here is you order';
     String status = widget.isOnGoingOrder ? 'Pending' : 'Completed';
+    String title = widget.isOnGoingOrder ? 'Order Placed Succesfully' : 'Order Delivered Succesfully';
     return Scaffold(
       appBar: AppBar(
-        title: Text('Order Placed Succesfully'),
+        title: Text(title),
       ),
       body: Column(
               children: <Widget>[
@@ -53,7 +53,7 @@ class _PlaceOrderState extends State<PlaceOrder> {
                   textAlign: TextAlign.center,
                 ),
                 QrImage(
-                  data: widget.orderId,
+                  data: widget.order.uid,
                   version: QrVersions.auto,
                   size: 250,
                 ),

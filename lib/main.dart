@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:jiitexpense/Layouts/auth/auth.dart';
 import 'package:jiitexpense/Layouts/wrapper.dart';
 import 'package:jiitexpense/model/user.dart';
 import 'package:jiitexpense/services/auth/auth.dart';

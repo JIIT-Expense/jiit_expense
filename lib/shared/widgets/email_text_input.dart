@@ -3,7 +3,7 @@ import 'package:jiitexpense/shared/constants/text_input_decoration.dart';
 
 class EmailTextInput extends StatelessWidget {
 
-  Function updateEmail;
+  final Function updateEmail;
 
   EmailTextInput({ this.updateEmail });
 

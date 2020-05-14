@@ -3,7 +3,7 @@ import 'package:jiitexpense/shared/constants/text_input_decoration.dart';
 
 class PasswordTextInput extends StatelessWidget {
 
-  Function updatePassword;
+  final Function updatePassword;
 
   PasswordTextInput({ this.updatePassword });
 
