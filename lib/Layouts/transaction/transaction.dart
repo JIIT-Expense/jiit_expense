@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jiitexpense/Layouts/transaction/recieveMoney.dart';
+import 'package:jiitexpense/Layouts/transaction/sendMoney.dart';
 
 class Transaction extends StatefulWidget {
   @override
@@ -21,7 +22,11 @@ class _TransactionState extends State<Transaction> {
           children: <Widget>[
             RaisedButton(
               onPressed: () {
-                print('');
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SendMoney())
+                );
               },
               child: Text('Send'),
             ),
