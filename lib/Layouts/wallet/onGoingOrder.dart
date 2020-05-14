@@ -6,8 +6,8 @@ import 'package:jiitexpense/model/user.dart';
 import 'package:jiitexpense/services/order/order.dart';
 import 'package:jiitexpense/shared/widgets/orderTile.dart';
 
-class onGoingOrders extends StatelessWidget {
-  const onGoingOrders({
+class OnGoingOrders extends StatelessWidget {
+  const OnGoingOrders({
     Key key,
     @required this.user,
     @required this.widget,

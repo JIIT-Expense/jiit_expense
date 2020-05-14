@@ -6,8 +6,8 @@ import 'package:jiitexpense/model/user.dart';
 import 'package:jiitexpense/services/order/order.dart';
 import 'package:jiitexpense/shared/widgets/orderTile.dart';
 
-class prevOrder extends StatelessWidget {
-  const prevOrder({
+class PrevOrder extends StatelessWidget {
+  const PrevOrder({
     Key key,
     @required this.user,
     @required this.widget,

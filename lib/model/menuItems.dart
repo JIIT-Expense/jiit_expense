@@ -7,12 +7,12 @@ class MenuItems {
   MenuItems({this.menuItems, this.uid});
 
   MenuItems.fromMap(Map snapshot, String id) :
-        menuItems = ((snapshot['items'] as List).map((item) => MenuItem(
+        menuItems = (snapshot['items'] as List).map((item) => MenuItem(
           name: item['name'] ?? '',
           availability: item['availability'] ?? 0,
           waitingTime: item['waitingTime'] ?? 0,
           cost: item['cost'] ?? 0,
-          )).toList() as List<MenuItem>),
+          )).toList(),
         uid = id;
 
   toJson() {
