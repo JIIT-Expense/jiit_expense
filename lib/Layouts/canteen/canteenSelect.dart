@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:jiitexpense/Layouts/home/homeWrapper.dart';
 import 'package:jiitexpense/Layouts/loading.dart';
+import 'package:jiitexpense/model/user.dart';
+import 'package:jiitexpense/services/auth/auth.dart';
 import 'package:jiitexpense/services/canteen/canteen.dart';
+import 'package:jiitexpense/services/wallet/wallet.dart';
+import 'package:provider/provider.dart';
 
 class CanteenSelect extends StatelessWidget {
 
@@ -11,6 +15,8 @@ class CanteenSelect extends StatelessWidget {
     updateSelectedCanteen(String uid) {
       Navigator.push(context, MaterialPageRoute(builder: (context) => HomeWrapper(canteenId: uid)));
     }
+
+    User user = Provider.of<User>(context);
 
     var futureBuilder = new FutureBuilder(
       future: CanteenService().fetchCanteens(),
@@ -30,7 +36,12 @@ class CanteenSelect extends StatelessWidget {
                     itemCount: snapshot.data.length,
                     itemBuilder: (context, index) {
                       return InkWell(
-                        onTap: () {
+                        onTap: () async {
+//                          Navigator.push(context, MaterialPageRoute(builder: (context) => Loading()));
+//                          print('start');
+                          await WalletService().addWallet(user.uid, snapshot.data[index].uid);
+//                          print('end');
+//                          Navigator.pop(context);
                           updateSelectedCanteen(snapshot.data[index].uid);
                         },
                         child: Container(
@@ -42,6 +53,7 @@ class CanteenSelect extends StatelessWidget {
                                   child: Text(
                                     snapshot.data[index].name,
                                     style: TextStyle(color: Colors.white, fontSize: 36.0),
+                                    textAlign: TextAlign.center,
                                   )),
                             ),
                           ),
@@ -61,6 +73,14 @@ class CanteenSelect extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Select Canteen'),
+        actions: <Widget>[
+          FlatButton(
+            child: Text('Logout'),
+            onPressed: () async {
+              await AuthService().signOut();
+            },
+          ),
+        ],
       ),
         body: futureBuilder,
     );

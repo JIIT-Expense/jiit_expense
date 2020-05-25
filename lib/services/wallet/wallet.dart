@@ -17,4 +17,23 @@ class WalletService {
     await firestore.collection(dbPath).document(userId).setData({canteenId: newAmount});
   }
 
+  addWallet(String userId, String canteenId) async {
+    await firestore.collection(dbPath).document(userId).setData({canteenId : 0});
+  }
+  
+  Future<int> getBalance(String userId, String canteenId) async {
+    int balance;
+    var doc = firestore.collection(dbPath).document(userId);
+    await doc.get().then((document) => {
+      balance = (document[canteenId] as int)
+    });
+    return balance;
+  }
+
+  sendMoney(String senderId, String receiverId, String canteenId, int senderBalance, int amount) async {
+    await firestore.collection(dbPath).document(senderId).setData({canteenId: senderBalance-amount});
+    var receiverBalance = await getBalance(receiverId, canteenId);
+    await firestore.collection(dbPath).document(receiverId).setData({canteenId: receiverBalance + amount});
+  }
+
 }

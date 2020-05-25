@@ -24,7 +24,9 @@ class _AddMoneyState extends State<AddMoney> {
           QrImage(
             data: '${widget.userId}__${widget.canteenId}',
             version: QrVersions.auto,
-          )
+          ),
+          Text(widget.userId),
+          Text(widget.canteenId),
         ],
       ),
     );

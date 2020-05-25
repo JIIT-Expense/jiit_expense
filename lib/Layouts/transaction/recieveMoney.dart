@@ -26,7 +26,9 @@ class _ReceiveMoneyState extends State<ReceiveMoney> {
           QrImage(
             data: '${user.uid}__${widget.canteenId}',
             version: QrVersions.auto,
-          )
+          ),
+          Text(user.uid),
+          Text(widget.canteenId),
         ],
       ),
     );

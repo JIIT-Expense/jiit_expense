@@ -64,7 +64,7 @@ class _OrderState extends State<Order> {
                   ),
                 ],
               ),
-              body: Column(
+              body: menuItems.length == 0 ? Text('No items added yet in the Menu..Try back later') : Column(
                 children: <Widget>[
                   Expanded(
                     child: ListView.builder(

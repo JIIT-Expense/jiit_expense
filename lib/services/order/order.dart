@@ -8,7 +8,7 @@ import 'package:jiitexpense/services/wallet/wallet.dart';
 class OrderService {
   Firestore firestore = Firestore.instance;
   String onGoingOrderPath = 'ongoingOrder';
-  String pastOrderPath = 'pastOrder';
+  String pastOrderPath = 'previousOrder';
 
 
   checkOrder(String userId, List<MenuItem> menuItems, List<int> quantity, String canteenId, int walletBalance) {

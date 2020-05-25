@@ -31,16 +31,10 @@ class _MenuItemWidgetState extends State<MenuItemWidget> {
                 children: <Widget>[
                   Text(
                     widget.menuItem.name,
-                    style: TextStyle(
-                      fontSize: 18.0,
-                    ),
+
                   ),
                   Text(
-                    '$quantity / ${widget.menuItem.availability} added to cart',
-                    style: TextStyle(
-                      fontSize: 16.0,
-                      letterSpacing: 2.0,
-                    ),
+                    '$quantity / ${widget.menuItem.availability}',
                   ),
                 ],
               ),
