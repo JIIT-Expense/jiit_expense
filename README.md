@@ -2,6 +2,17 @@
 
 A canteen management application
 
+<p float="left">
+  <img src="images/Phone%20Screenshot%201.jpg" width="200" />
+  <img src="images/Phone%20Screenshot%202.jpg" width="200" />
+  <img src="images/Phone%20Screenshot%203.jpg" width="200" />
+</p>
+<p float="left">
+ <img src="images/Phone%20Screenshot%204.jpg" width="200" />
+  <img src="images/Phone%20Screenshot%205.jpg" width="200" />
+</p>
+
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
