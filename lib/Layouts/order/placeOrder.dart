@@ -17,7 +17,7 @@ class _PlaceOrderState extends State<PlaceOrder> {
     return Text(
       text,
       style: TextStyle(
-        fontSize: 20,
+        fontSize: 12,
       ),
       textAlign: TextAlign.center,
     );
@@ -26,7 +26,7 @@ class _PlaceOrderState extends State<PlaceOrder> {
     return Text(
       text,
       style: TextStyle(
-        fontSize: 20,
+        fontSize: 12,
         fontWeight: FontWeight.bold,
       ),
       textAlign: TextAlign.center,

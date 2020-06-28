@@ -18,7 +18,10 @@ class WalletService {
   }
 
   addWallet(String userId, String canteenId) async {
-    await firestore.collection(dbPath).document(userId).setData({canteenId : 0});
+    await firestore.collection(dbPath).document(userId).get().then((value) => {
+      value.exists ? value.data.containsKey(canteenId) ? null : firestore.collection(dbPath).document(userId).setData({canteenId : 0}) : firestore.collection(dbPath).document(userId).setData({canteenId : 0})
+    });
+
   }
   
   Future<int> getBalance(String userId, String canteenId) async {

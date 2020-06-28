@@ -48,7 +48,7 @@ class _CheckoutState extends State<Checkout> {
                   Text(
                     'Here are your added Items',
                     style: TextStyle(
-                      fontSize: 30,
+                      fontSize: 20,
                     ),
                   ),
                   SizedBox(
@@ -129,14 +129,14 @@ class _CheckoutState extends State<Checkout> {
                             'Total : ${order != null ? order.totalAmount : 'NA'}',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 25,
+                              fontSize: 17,
                             ),
                           ),
                           Text(
                             'Wallet Balance : ${wallet.data.balance}',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 20,
+                              fontSize: 13,
                             ),
                           ),
                         ],

@@ -42,8 +42,8 @@ class _PassCodeScreenState extends State<PassCodeScreen> {
     return LockScreen(
         title: "Enter Passcode",
         passLength: myPass.length,
-        bgImage: "images/pass_code_bg.jpg",
-        fingerPrintImage: "images/fingerprint.png",
+        bgImage: "Lib/images/bg.jpg",
+        fingerPrintImage: "Lib/images/fingerprint.png",
         showFingerPass: true,
         fingerFunction: biometrics,
         fingerVerify: isFingerprint,

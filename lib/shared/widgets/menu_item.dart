@@ -30,12 +30,17 @@ class _MenuItemWidgetState extends State<MenuItemWidget> {
               Column(
                 children: <Widget>[
                   Text(
-                    widget.menuItem.name,
-
+                    '${widget.menuItem.name}',
                   ),
                   Text(
                     '$quantity / ${widget.menuItem.availability}',
                   ),
+                  Text(
+                      '${widget.menuItem.cost} Rs',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold
+                    ),
+                  )
                 ],
               ),
               Spacer(),

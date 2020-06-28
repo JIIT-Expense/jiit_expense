@@ -30,7 +30,7 @@ class OrderTile extends StatelessWidget {
               children: <Widget>[
                 Row(
                   children: <Widget>[
-                    Text('Order Id : '),
+                    Text('Id : '),
                     Text('${order.uid}')
                   ],
                 ),
@@ -42,12 +42,12 @@ class OrderTile extends StatelessWidget {
                     Text(
                       '${order.totalAmount} Rs',
                       style: TextStyle(
-                        fontSize: 20
+                        fontSize: 15
                       ),
                     ),
                     Text('${DateFormat('').add_jm().add_yMMMMd().format(order.dateTime)}',
                       style: TextStyle(
-                        fontSize: 17
+                        fontSize: 12
                       ),
                     )
                   ],

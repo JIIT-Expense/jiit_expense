@@ -1,8 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:jiitexpense/model/user.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  String canteenUserDb = "CanteenUsers";
 
   Stream<User> get user {
     return _auth.onAuthStateChanged.map(_userFromFirebaseUser);
@@ -40,6 +43,14 @@ class AuthService {
       print(e.toString());
       return null;
     }
+  }
+  
+  isCanteenUser(userId) async {
+    DocumentSnapshot doc = await Firestore.instance.collection(canteenUserDb).document(userId).get();
+    if (doc == null || !doc.exists) {
+      return false;
+    }
+    return true;
   }
 
   Future signOut() async {
